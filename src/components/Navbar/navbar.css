@@ -1,0 +1,21 @@
+.navv{
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+.navbrand {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 30px;
+    color: white !important;
+}
+
+.links{
+    font-size: 23px;
+    color: white !important;
+}
+
+.dectext{
+    text-decoration: none;
+    
+}
