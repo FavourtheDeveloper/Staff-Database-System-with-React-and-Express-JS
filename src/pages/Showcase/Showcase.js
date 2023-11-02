@@ -11,7 +11,7 @@ const Showcase = () => {
       .then((res) => res.json())
       .then((data) => setInfo(data))
       .catch((error) => console.error('Error fetching data: ', error)); // Handle any fetch errors
-  }, []);
+  }, [info]);
 
   console.log(info);
 
