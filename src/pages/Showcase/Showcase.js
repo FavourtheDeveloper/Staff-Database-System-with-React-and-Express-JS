@@ -1,77 +1,44 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import { Button } from 'react-bootstrap';
 import './showcase.css'
+import Tablee from '../../components/Table/Tablee'
 
 const Showcase = () => {
+  const [info, setInfo] = useState([]); // Initialize info as an empty array
+
+  useEffect(() => {
+    fetch("allstaffs")
+      .then((res) => res.json())
+      .then((data) => setInfo(data))
+      .catch((error) => console.error('Error fetching data: ', error)); // Handle any fetch errors
+  }, []);
+
+  console.log(info);
+
   return (
     <div className='showcase'>
       <div className="container">
-       <Table striped bordered hover variant="dark">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td><Link to={'/edit'}><Button>Edit</Button></Link></td>
-          <td><Button>Delete</Button></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td><Link to={'/edit'}><Button>Edit</Button></Link></td>
-          <td><Button>Delete</Button></td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td><Link to={'/edit'}><Button>Edit</Button></Link></td>
-          <td><Button>Delete</Button></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td><Link to={'/edit'}><Button>Edit</Button></Link></td>
-          <td><Button>Delete</Button></td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td><Link to={'/edit'}><Button>Edit</Button></Link></td>
-          <td><Button>Delete</Button></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td><Link to={'/edit'}><Button>Edit</Button></Link></td>
-          <td><Button>Delete</Button></td>
-        </tr>
-      </tbody>
-    </Table>
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {info.map((staff, index) => (
+              <Tablee key={index} staff={staff} />
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
+
 
 export default Showcase

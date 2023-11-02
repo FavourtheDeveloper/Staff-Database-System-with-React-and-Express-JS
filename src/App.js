@@ -13,7 +13,7 @@ function App() {
      <Routes>
       <Route path='/' Component={Showcase} />
       <Route path='/create' Component={Createnew} />
-      <Route path='/edit' Component={Edit} />
+      <Route path='/edit/:id' Component={Edit} />
       </Routes>
     </div>
     </Router>
