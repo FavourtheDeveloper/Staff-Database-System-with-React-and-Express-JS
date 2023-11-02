@@ -7,7 +7,7 @@ app.listen(5000);
 
 app.use(express.urlencoded({extended: false}))
 
-const URI = process.env.URI
+const URI = process.env.mongodburi;
 mongoose.connect(URI)
 .then((result) => {
     console.log("Database connected Successfully");

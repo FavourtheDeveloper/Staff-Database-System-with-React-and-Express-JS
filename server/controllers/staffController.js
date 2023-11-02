@@ -62,7 +62,6 @@ const editStaff = async(req, res) => {
 
 
 
-
 module.exports = {
     getAllStaffs,
     createNewStaff,
